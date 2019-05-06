@@ -15,18 +15,19 @@ class Perceptron:
 
 	# Perceptron learning algorithm
 	def perceptron_learning_alg(self, training_examples,weights):
-		learning_rate = 0.1
+		learning_rate = 0.01
 		while (self.get_num_errors(training_examples,weights) > 0): # TODO: check if error stops decreasing
 			# Iteratively apply the perceptron to each training ex. 
 			for example in training_examples:
-				# Modifty weights 
-				delta_w_i = []
+				# Get target output and actual output
+				t = self.get_target_output(example)
+				o = self.output(weights,example)
+				# Update weights
 				for i in range(len(weights)): 
 					x_i = float(example[i])
 					w_i = weights[i]
-					delta_w_i.append(learning_rate * (self.get_target_output(example) - self.output(weights,example)) * x_i)
-				for i in range(len(weights)):
-					weights[i] += delta_w_i[i]
+					delta_w_i = learning_rate * (t - o) * x_i
+					weights[i] += delta_w_i
 			self.results.append([self.get_num_errors(training_examples,weights),weights]) # Save results for this epoch 
 		print weights
 
