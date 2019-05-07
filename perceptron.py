@@ -6,6 +6,7 @@ class Perceptron:
 		self.weights = weights
 		self.target_concept = target_concept
 
+		self.error_history = []
 		self.results = []
 
 		self.perceptron_learning_alg(training_examples,weights)
@@ -16,20 +17,31 @@ class Perceptron:
 	# Perceptron learning algorithm
 	def perceptron_learning_alg(self, training_examples,weights):
 		learning_rate = 0.01
-		while (self.get_num_errors(training_examples,weights) > 0): # TODO: check if error stops decreasing
+		errors = self.get_num_errors(training_examples,weights) # Get initial error
+		self.error_history.append(errors)
+		self.results.append(list(weights))
+
+		while (errors > 0): # TODO: check if error stops decreasing
+			errors = 0
 			# Iteratively apply the perceptron to each training ex. 
 			for example in training_examples:
 				# Get target output and actual output
 				t = self.get_target_output(example)
 				o = self.output(weights,example)
+
+				if (t != o):
+					errors += 1
+
 				# Update weights
 				for i in range(len(weights)): 
 					x_i = float(example[i])
 					w_i = weights[i]
 					delta_w_i = learning_rate * (t - o) * x_i
 					weights[i] += delta_w_i
-			self.results.append([self.get_num_errors(training_examples,weights),weights]) # Save results for this epoch 
-		print weights
+			print(errors)
+			self.error_history.append(errors)
+			self.results.append(list(weights)) # Save results for this epoch 
+		print ("Final Weights:", weights)
 
 
 	# Returns output of the perceptron unit
