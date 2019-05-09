@@ -21,7 +21,10 @@ class Perceptron:
 		self.error_history.append(errors)
 		self.results.append(list(weights))
 
-		while (errors > 0): # TODO: check if error stops decreasing
+		epoch = 0
+		max_iterations = 100 # Set max iterations to prevent it from running forever
+
+		while ((errors > 0) & (epoch < max_iterations)): 
 			errors = 0
 			# Iteratively apply the perceptron to each training ex. 
 			for example in training_examples:
@@ -38,10 +41,11 @@ class Perceptron:
 					w_i = weights[i]
 					delta_w_i = learning_rate * (t - o) * x_i
 					weights[i] += delta_w_i
-			print(errors)
+			#print(errors)
 			self.error_history.append(errors)
 			self.results.append(list(weights)) # Save results for this epoch 
-		print ("Final Weights:", weights)
+			epoch += 1
+		print ("Final Weights:", weights,"Error: ",errors)
 
 
 	# Returns output of the perceptron unit
@@ -80,7 +84,7 @@ class Perceptron:
 			if (output != target_output):
 				num_errors = num_errors + 1
 
-		print(num_errors)
+		#print(num_errors)
 		return num_errors
 
 	# Returns the target output for the given example

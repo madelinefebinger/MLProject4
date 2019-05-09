@@ -26,49 +26,34 @@ def graph(error_history,plot_title,image_name):
 # Task 2, Initial Weights all 0 
 initial_weights = [0,0,0,0,0]
 print("T2 LP1: Iris-setosa")
-p1 = perceptron.Perceptron(training_examples,initial_weights,"Iris-setosa")
-print(p1.results)
-print(p1.error_history)
-graph(p1.error_history,"T2 LP1: Iris-setosa","iris-setosa-t2.png")
+task2_p1 = perceptron.Perceptron(training_examples,initial_weights,"Iris-setosa")
+#print(task2_p1.results)
+#print(task2_p1.error_history)
+graph(task2_p1.error_history,"T2 LP1: Iris-setosa","iris-setosa-t2.png")
 
-
-"""
 initial_weights = [0,0,0,0,0]
-#The error is never reaching 0 on this one so I commented it out for now.
 print("LP2: Iris-versicolor")
-p2 = perceptron.Perceptron(training_examples,initial_weights,"Iris-versicolor")
-print(p2.results)
-graph(p2.error_history,"T2 LP2: Iris-versicolor","iris-versicolor-t2.png")
-"""
+task2_p2 = perceptron.Perceptron(training_examples,initial_weights,"Iris-versicolor")
+graph(task2_p2.error_history,"T2 LP2: Iris-versicolor","iris-versicolor-t2.png")
 
 initial_weights = [0,0,0,0,0]
 print("T2 LP3: Iris-virginia")
-p3 = perceptron.Perceptron(training_examples,initial_weights,"Iris-virginia")
-print(p3.results)
-print(p3.error_history)
-graph(p3.error_history,"T2 LP3: Iris-virginia","iris-virginia-t31.png")
+task2_p3 = perceptron.Perceptron(training_examples,initial_weights,"Iris-virginica")
+graph(task2_p3.error_history,"T2 LP3: Iris-virginia","iris-virginica-t31.png")
 
 # Task 3, Initial Weights all 1
 initial_weights = [1,1,1,1,1]
 print("T3.1 LP1: Iris-setosa")
-p1 = perceptron.Perceptron(training_examples,initial_weights,"Iris-setosa")
-print(p1.results)
-print(p1.error_history)
-graph(p1.error_history,"T3.1 LP1: Iris-setosa","iris-setosa-t31.png")
+task3_p1 = perceptron.Perceptron(training_examples,initial_weights,"Iris-setosa")
+graph(task3_p1.error_history,"T3.1 LP1: Iris-setosa","iris-setosa-t31.png")
 
-
-"""
 initial_weights = [1,1,1,1,1]
-#The error is never reaching 0 on this one so I commented it out for now.
 print("LP2: Iris-versicolor")
-p2 = perceptron.Perceptron(training_examples,initial_weights,"Iris-versicolor")
-print(p2.results)
-graph(p2.error_history,"T3.1 LP2: Iris-versicolor","iris-versicolor-t2.png")
-"""
+task3_p2 = perceptron.Perceptron(training_examples,initial_weights,"Iris-versicolor")
+graph(task3_p2.error_history,"T3.1 LP2: Iris-versicolor","iris-versicolor-t2.png")
+
 
 initial_weights = [1,1,1,1,1]
-print("T3.1 LP3: Iris-virginia")
-p3 = perceptron.Perceptron(training_examples,initial_weights,"Iris-virginia")
-print(p3.results)
-print(p3.error_history)
-graph(p3.error_history,"T3.1 LP3: Iris-virginia","iris-virginia-t31.png")
+print("T3.1 LP3: Iris-virginica")
+task3_p3 = perceptron.Perceptron(training_examples,initial_weights,"Iris-virginica")
+graph(task3_p3.error_history,"T3.1 LP3: Iris-virginica","iris-virginica-t31.png")
