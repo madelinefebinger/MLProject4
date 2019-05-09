@@ -62,17 +62,6 @@ class Perceptron:
 		else:
 			return -1
 
-
-	# Create a random starting weight vector for the perceptron
-	def get_random_starting_weights(self,num_weights): 
-		weights = []
-
-		for i in range(num_weights):
-			weight = random.uniform(-1,1)
-			weights.append(weight)
-
-		return weights
-
 	# Returns the number of errors with the given weights
 	def get_num_errors(self,training_examples,weights):
 		num_errors = 0
